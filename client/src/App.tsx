@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [hello, setHello] = useState('')
+  
   useEffect(() => {
     const sayHello = async () => {
       const response = await fetch("/api/hello");
       const body = await response.json();
-      console.log(body);
+      setHello(body);
     };
     sayHello();
   }, []);
@@ -19,6 +21,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <h1>{hello}</h1>
         <a
           className="App-link"
           href="https://reactjs.org"
