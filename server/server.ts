@@ -7,7 +7,8 @@ const app = express();
 
 app.use(express.json());
 // Serve the React static files after build
-app.use(express.static("../client/build"));
+const clientDirPath = __dirname + "/../client/build";
+app.use(express.static(clientDirPath));
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
